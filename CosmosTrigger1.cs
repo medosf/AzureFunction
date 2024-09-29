@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
 namespace Company.Function
@@ -29,16 +30,24 @@ namespace Company.Function
                 _logger.LogInformation("First document Id: " + input[0].id);
             }
         }
+
+        [Function("CosmosTrigger2")]
+        public void Run2([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req)
+        {
+
+            _logger.LogInformation("C# HTTP trigger function processed a request.");
+            _logger.LogInformation("req context >>>>: " + req);
+
+        }
+
+        public class MyDocument
+        {
+            public string id { get; set; }
+
+            public string Text { get; set; }
+
+            public int Number { get; set; }
+
+            public bool Boolean { get; set; }
+        }
     }
-
-    public class MyDocument
-    {
-        public string id { get; set; }
-
-        public string Text { get; set; }
-
-        public int Number { get; set; }
-
-        public bool Boolean { get; set; }
-    }
-}
