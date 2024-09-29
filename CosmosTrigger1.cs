@@ -39,15 +39,16 @@ namespace Company.Function
             _logger.LogInformation("req context >>>>: " + req);
 
         }
-
-        public class MyDocument
-        {
-            public string id { get; set; }
-
-            public string Text { get; set; }
-
-            public int Number { get; set; }
-
-            public bool Boolean { get; set; }
-        }
     }
+
+    public class MyDocument
+    {
+        public string id { get; set; }
+
+        public string Text { get; set; }
+
+        public int Number { get; set; }
+
+        public bool Boolean { get; set; }
+    }
+}
